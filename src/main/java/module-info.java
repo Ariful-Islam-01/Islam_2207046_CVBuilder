@@ -11,6 +11,6 @@ module com.example.cv_builder {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
-    opens com.example.cv_builder to javafx.fxml;
+    opens com.example.cv_builder.controllers to javafx.fxml;
     exports com.example.cv_builder;
 }
