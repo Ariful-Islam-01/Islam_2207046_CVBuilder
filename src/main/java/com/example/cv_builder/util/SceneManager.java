@@ -24,4 +24,9 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+    public static void switchToPreview() {
+        switchScene("/com/example/cv_builder/preview-view.fxml");
+    }
+
 }

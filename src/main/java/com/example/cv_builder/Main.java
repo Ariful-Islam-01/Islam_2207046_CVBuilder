@@ -11,9 +11,10 @@ import java.io.IOException;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         SceneManager.setStage(stage);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("home-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/cv_builder/home-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         stage.setTitle("CV Builder");
