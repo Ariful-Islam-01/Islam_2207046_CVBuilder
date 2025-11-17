@@ -2,7 +2,7 @@ package com.example.cv_builder.controllers;
 
 import com.example.cv_builder.model.CV;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
 
 public class PreviewController {
 
@@ -10,10 +10,11 @@ public class PreviewController {
     @FXML private Label emailLabel;
     @FXML private Label phoneLabel;
     @FXML private Label addressLabel;
-    @FXML private TextArea educationLabel;
-    @FXML private TextArea skillsLabel;
-    @FXML private TextArea experienceLabel;
-    @FXML private TextArea projectsLabel;
+
+    @FXML private Label educationLabel;
+    @FXML private Label skillsLabel;
+    @FXML private Label experienceLabel;
+    @FXML private Label projectsLabel;
 
     public void setCV(CV cv) {
         if (cv != null) loadData(cv);
@@ -29,9 +30,9 @@ public class PreviewController {
         experienceLabel.setText(cv.getExperience());
         projectsLabel.setText(cv.getProjects());
     }
+
     @FXML
     private void goBack() {
         com.example.cv_builder.util.SceneManager.switchToForm();
     }
-
 }

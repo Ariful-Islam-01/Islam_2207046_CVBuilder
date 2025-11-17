@@ -1,57 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.cv_builder.controllers.PreviewController"
-            prefWidth="800" prefHeight="600">
+<BorderPane prefHeight="600" prefWidth="700" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.cv_builder.controllers.PreviewController">
 
     <top>
-        <Label text="CV Preview"
-               style="-fx-font-size: 26px; -fx-font-weight: bold;"
-               BorderPane.alignment="CENTER" />
-        <HBox alignment="CENTER_LEFT" spacing="15">
-            <Button text="← Back" onAction="#goBack"/>
-            <Label text="CV Preview" styleClass="header-title" />
-        </HBox>
+        <HBox alignment="CENTER_LEFT" spacing="20">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15" />
+            </padding>
 
+            <Button onAction="#goBack" text="← Back" />
+            <Label text="CV Preview" style="-fx-font-size: 26px; -fx-font-weight: bold;" BorderPane.alignment="CENTER" />
+        </HBox>
     </top>
 
     <center>
         <ScrollPane fitToWidth="true">
             <VBox spacing="20">
                 <padding>
-                    <Insets top="20" right="30" bottom="20" left="30"/>
+                    <Insets top="20" right="30" bottom="20" left="30" />
                 </padding>
 
-                <Label fx:id="nameLabel" styleClass="cv-name"/>
+                <Label fx:id="nameLabel" style="-fx-font-size: 28px; -fx-font-weight: bold;" styleClass="cv-name"/>
 
-                <Label text="Email:" styleClass="section-label"/>
-                <Label fx:id="emailLabel"/>
+                <HBox spacing="10">
+                    <Label text="Email:" style="-fx-font-size: 14px; -fx-font-weight: bold;" styleClass="section-label"/>
+                    <Label fx:id="emailLabel"/>
+                </HBox>
 
-                <Label text="Phone:" styleClass="section-label"/>
-                <Label fx:id="phoneLabel"/>
+                <HBox spacing="10">
+                    <Label text="Phone:" style="-fx-font-size: 14px; -fx-font-weight: bold;" styleClass="section-label"/>
+                    <Label fx:id="phoneLabel"/>
+                </HBox>
 
-                <Label text="Address:" styleClass="section-label"/>
-                <Label fx:id="addressLabel"/>
+                <HBox spacing="10">
+                    <Label text="Address:" style="-fx-font-size: 14px; -fx-font-weight: bold;" styleClass="section-label"/>
+                    <Label fx:id="addressLabel"/>
+                </HBox>
 
-                <Label text="Education" styleClass="section-title"/>
-                <Separator/>
-                <TextArea fx:id="educationLabel" wrapText="true" editable="false"/>
 
-                <Label text="Skills" styleClass="section-title"/>
-                <Separator/>
-                <TextArea fx:id="skillsLabel" wrapText="true" editable="false"/>
 
-                <Label text="Experience" styleClass="section-title"/>
-                <Separator/>
-                <TextArea fx:id="experienceLabel" wrapText="true" editable="false"/>
+                <!-- EDUCATION -->
+                <VBox spacing="10">
+                    <Label text="Education" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <Label fx:id="educationLabel" wrapText="true"/>
+                </VBox>
 
-                <Label text="Projects" styleClass="section-title"/>
-                <Separator/>
-                <TextArea fx:id="projectsLabel" wrapText="true" editable="false"/>
+
+
+                <!-- SKILLS -->
+                <VBox spacing="10">
+                    <Label text="Skills" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <Label fx:id="skillsLabel" wrapText="true"/>
+                </VBox>
+
+
+                <!-- EXPERIENCE -->
+                <VBox spacing="10">
+                    <Label text="Experience" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <Label fx:id="experienceLabel" wrapText="true"/>
+                </VBox>
+
+
+                <!-- PROJECTS -->
+                <VBox spacing="10">
+                    <Label text="Projects" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Separator/>
+                    <Label fx:id="projectsLabel" wrapText="true"/>
+                </VBox>
+
             </VBox>
         </ScrollPane>
     </center>
