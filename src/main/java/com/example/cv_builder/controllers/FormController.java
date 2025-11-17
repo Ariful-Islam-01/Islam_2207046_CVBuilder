@@ -35,6 +35,12 @@ public class FormController {
                         experienceField.getText()
                 );
 
+                Alert a = new Alert(Alert.AlertType.INFORMATION);
+                a.setTitle("Success");
+                a.setHeaderText(null);
+                a.setContentText("Your CV created successfully!");
+                a.show();
+
                 SceneManager.switchToPreview();
             }
         });
@@ -47,6 +53,30 @@ public class FormController {
         }
         if (emailField.getText().isEmpty()) {
             showAlert("Email is required.");
+            return false;
+        }
+        if (phoneField.getText().isEmpty()) {
+            showAlert("Phone is required.");
+            return false;
+        }
+        if (addressField.getText().isEmpty()) {
+            showAlert("Address is required.");
+            return false;
+        }
+        if (educationField.getText().isEmpty()) {
+            showAlert("Education is required.");
+            return false;
+        }
+        if (skillsField.getText().isEmpty()) {
+            showAlert("Skills is required.");
+            return false;
+        }
+        if (experienceField.getText().isEmpty()) {
+            showAlert("Experience is required.");
+            return false;
+        }
+        if (projectsField.getText().isEmpty()) {
+            showAlert("Project is required.");
             return false;
         }
         return true;

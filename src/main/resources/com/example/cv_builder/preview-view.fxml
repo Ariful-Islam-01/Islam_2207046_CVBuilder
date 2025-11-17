@@ -12,38 +12,46 @@
         <Label text="CV Preview"
                style="-fx-font-size: 26px; -fx-font-weight: bold;"
                BorderPane.alignment="CENTER" />
+        <HBox alignment="CENTER_LEFT" spacing="15">
+            <Button text="← Back" onAction="#goBack"/>
+            <Label text="CV Preview" styleClass="header-title" />
+        </HBox>
+
     </top>
 
     <center>
         <ScrollPane fitToWidth="true">
-            <VBox spacing="15">
+            <VBox spacing="20">
                 <padding>
-                    <Insets top="20" right="20" bottom="20" left="20"/>
+                    <Insets top="20" right="30" bottom="20" left="30"/>
                 </padding>
 
-                <Label fx:id="nameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                <Label fx:id="nameLabel" styleClass="cv-name"/>
 
-                <Label text="Email:" style="-fx-font-weight: bold;" />
+                <Label text="Email:" styleClass="section-label"/>
                 <Label fx:id="emailLabel"/>
 
-                <Label text="Phone:" style="-fx-font-weight: bold;" />
+                <Label text="Phone:" styleClass="section-label"/>
                 <Label fx:id="phoneLabel"/>
 
-                <Label text="Address:" style="-fx-font-weight: bold;" />
+                <Label text="Address:" styleClass="section-label"/>
                 <Label fx:id="addressLabel"/>
 
-                <Label text="Education:" style="-fx-font-weight: bold;" />
-                <TextArea fx:id="educationLabel" editable="false" wrapText="true"/>
+                <Label text="Education" styleClass="section-title"/>
+                <Separator/>
+                <TextArea fx:id="educationLabel" wrapText="true" editable="false"/>
 
-                <Label text="Skills:" style="-fx-font-weight: bold;" />
-                <TextArea fx:id="skillsLabel" editable="false" wrapText="true"/>
+                <Label text="Skills" styleClass="section-title"/>
+                <Separator/>
+                <TextArea fx:id="skillsLabel" wrapText="true" editable="false"/>
 
-                <Label text="Experience:" style="-fx-font-weight: bold;" />
-                <TextArea fx:id="experienceLabel" editable="false" wrapText="true"/>
+                <Label text="Experience" styleClass="section-title"/>
+                <Separator/>
+                <TextArea fx:id="experienceLabel" wrapText="true" editable="false"/>
 
-                <Label text="Projects:" style="-fx-font-weight: bold;" />
-                <TextArea fx:id="projectsLabel" editable="false" wrapText="true"/>
-
+                <Label text="Projects" styleClass="section-title"/>
+                <Separator/>
+                <TextArea fx:id="projectsLabel" wrapText="true" editable="false"/>
             </VBox>
         </ScrollPane>
     </center>

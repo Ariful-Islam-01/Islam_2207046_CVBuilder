@@ -29,4 +29,9 @@ public class PreviewController {
         experienceLabel.setText(cv.getExperience());
         projectsLabel.setText(cv.getProjects());
     }
+    @FXML
+    private void goBack() {
+        com.example.cv_builder.util.SceneManager.switchToForm();
+    }
+
 }
