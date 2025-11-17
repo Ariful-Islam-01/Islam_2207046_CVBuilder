@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="CONTROLLER_NAME"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.cv_builder.controllers.PreviewController"
+            prefWidth="800" prefHeight="600">
 
-</AnchorPane>
+    <top>
+        <Label text="CV Preview"
+               style="-fx-font-size: 26px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER" />
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="15">
+                <padding>
+                    <Insets top="20" right="20" bottom="20" left="20"/>
+                </padding>
+
+                <Label fx:id="nameLabel" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+
+                <Label text="Email:" style="-fx-font-weight: bold;" />
+                <Label fx:id="emailLabel"/>
+
+                <Label text="Phone:" style="-fx-font-weight: bold;" />
+                <Label fx:id="phoneLabel"/>
+
+                <Label text="Address:" style="-fx-font-weight: bold;" />
+                <Label fx:id="addressLabel"/>
+
+                <Label text="Education:" style="-fx-font-weight: bold;" />
+                <TextArea fx:id="educationLabel" editable="false" wrapText="true"/>
+
+                <Label text="Skills:" style="-fx-font-weight: bold;" />
+                <TextArea fx:id="skillsLabel" editable="false" wrapText="true"/>
+
+                <Label text="Experience:" style="-fx-font-weight: bold;" />
+                <TextArea fx:id="experienceLabel" editable="false" wrapText="true"/>
+
+                <Label text="Projects:" style="-fx-font-weight: bold;" />
+                <TextArea fx:id="projectsLabel" editable="false" wrapText="true"/>
+
+            </VBox>
+        </ScrollPane>
+    </center>
+
+</BorderPane>

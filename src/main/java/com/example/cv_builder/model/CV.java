@@ -2,34 +2,34 @@ package com.example.cv_builder.model;
 
 public class CV {
 
-    private String fullname;
-    private String email;
-    private String phone;
-    private String address;
-    private String education;
-    private String skills;
-    private String projects;
-    private String experience;
+    private static CV instance;
 
-    // Empty Constructor
-    public CV() {}
+    private String name, email, phone, address;
+    private String education, skills, projects, experience;
 
-    // Method to set all data at once
-    public void setData(String fullname, String email, String phone, String address,
+    public CV() {
+        instance = this;
+    }
+
+    public static CV getInstance() {
+        return instance;
+    }
+
+    public void setData(String name, String email, String phone, String address,
                         String education, String skills, String projects, String experience) {
 
-        this.fullname = fullname;
+        this.name = name;
         this.email = email;
         this.phone = phone;
         this.address = address;
+
         this.education = education;
         this.skills = skills;
         this.projects = projects;
         this.experience = experience;
     }
 
-    // Getter Methods
-    public String getFullname() { return fullname; }
+    public String getName() { return name; }
     public String getEmail() { return email; }
     public String getPhone() { return phone; }
     public String getAddress() { return address; }
@@ -37,5 +37,4 @@ public class CV {
     public String getSkills() { return skills; }
     public String getProjects() { return projects; }
     public String getExperience() { return experience; }
-
 }

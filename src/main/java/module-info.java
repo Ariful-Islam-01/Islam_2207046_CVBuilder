@@ -12,5 +12,7 @@ module com.example.cv_builder {
     requires com.almasb.fxgl.all;
 
     opens com.example.cv_builder.controllers to javafx.fxml;
+    opens com.example.cv_builder.model to javafx.fxml;
+
     exports com.example.cv_builder;
 }

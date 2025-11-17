@@ -23,8 +23,7 @@ public class FormController {
         generateBtn.setOnAction(e -> {
             if (isValid()) {
 
-                // Save data globally
-                CV cv = new CV();
+                CV cv = new CV();  // creates global instance
                 cv.setData(
                         nameField.getText(),
                         emailField.getText(),
