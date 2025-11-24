@@ -28,7 +28,7 @@ public class SceneManager {
             Parent root = loader.load();
 
             PreviewController previewController = loader.getController();
-            previewController.setCV(CV.getInstance());   // <-- IMPORTANT FIX
+            previewController.setCV(CV.getInstance());
 
             mainStage.setScene(new Scene(root));
             mainStage.show();

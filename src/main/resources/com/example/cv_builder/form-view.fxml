@@ -13,7 +13,6 @@
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">
 
-            <!-- FIX: directly place VBox inside ScrollPane -->
             <VBox spacing="25">
                 <padding>
                     <Insets top="20" right="30" bottom="20" left="30" />
