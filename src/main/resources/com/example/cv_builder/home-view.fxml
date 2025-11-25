@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<BorderPane fx:id="root" prefHeight="400" prefWidth="600" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.cv_builder.controllers.HomeController">
+<?import javafx.scene.control.*?>
+<BorderPane fx:id="root" prefHeight="400" prefWidth="600"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            fx:controller="com.example.cv_builder.controllers.HomeController">
 
     <top>
-        <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="CV Builder Application" underline="true" BorderPane.alignment="CENTER" />
+        <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="CV Builder Application" BorderPane.alignment="CENTER" />
     </top>
 
     <center>
         <VBox alignment="CENTER" spacing="20">
             <Label style="-fx-font-size: 16px;" text="Welcome! Create your Curriculum Vitae easily." />
-
-            <Button fx:id="createBtn" onAction="#handleCreateCV" style="-fx-font-size: 16px; -fx-padding: 10 20;" text="Create New CV" />
+            <HBox spacing="20" alignment="CENTER">
+                <Button fx:id="createBtn" onAction="#handleCreateCV" style="-fx-font-size: 16px; -fx-padding: 10 20;" text="Create New CV" />
+                <Button fx:id="savedBtn" onAction="#handleSavedCVs" style="-fx-font-size: 16px; -fx-padding: 10 20;" text="Saved CVs" />
+            </HBox>
         </VBox>
     </center>
 </BorderPane>

@@ -11,8 +11,14 @@ module com.example.cv_builder {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
 
+    requires com.fasterxml.jackson.core;
+    requires com.fasterxml.jackson.databind;
+
+    requires java.sql;
+    requires org.xerial.sqlitejdbc;
+
     opens com.example.cv_builder.controllers to javafx.fxml;
-    opens com.example.cv_builder.model to javafx.fxml;
+    opens com.example.cv_builder.model to javafx.fxml, com.fasterxml.jackson.databind;
 
     exports com.example.cv_builder;
 }

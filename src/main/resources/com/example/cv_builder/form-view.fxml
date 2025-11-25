@@ -1,29 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="600" prefWidth="800" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.example.cv_builder.controllers.FormController">
+<BorderPane prefHeight="600" prefWidth="800"
+            xmlns:fx="http://javafx.com/fxml/1"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            fx:controller="com.example.cv_builder.controllers.FormController">
 
     <top>
-        <Label style="-fx-font-size: 26px; -fx-font-weight: bold;" text="Create Your CV" BorderPane.alignment="CENTER" />
+        <HBox alignment="CENTER_LEFT" spacing="20" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10" />
+            </padding>
+            <Button fx:id="backBtn" text="← Back" />
+            <Label style="-fx-font-size: 22px; -fx-font-weight: bold;" text="Create / Edit CV" />
+        </HBox>
     </top>
 
     <center>
         <ScrollPane fitToHeight="true" fitToWidth="true">
-
-            <VBox spacing="25">
+            <VBox spacing="18">
                 <padding>
                     <Insets top="20" right="30" bottom="20" left="30" />
                 </padding>
 
-                <!-- SECTION 1 — Personal Information -->
                 <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Personal Information" />
                 <Separator />
 
                 <GridPane hgap="15" vgap="12">
-
                     <Label text="Full Name:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <TextField fx:id="nameField" prefHeight="26.0" prefWidth="253.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
@@ -35,48 +40,30 @@
 
                     <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
                     <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-
-                    <columnConstraints>
-                        <ColumnConstraints />
-                        <ColumnConstraints />
-                    </columnConstraints>
-
-                    <rowConstraints>
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                        <RowConstraints />
-                    </rowConstraints>
-
                 </GridPane>
 
-                <!-- SECTION 2 — Education -->
                 <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Education" />
                 <Separator />
                 <TextArea fx:id="educationField" prefRowCount="4" />
 
-                <!-- SECTION 3 — Skills -->
                 <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Skills" />
                 <Separator />
                 <TextArea fx:id="skillsField" prefRowCount="4" />
 
-                <!-- SECTION 4 — Work Experience -->
                 <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Work Experience" />
                 <Separator />
                 <TextArea fx:id="experienceField" prefRowCount="5" />
 
-                <!-- SECTION 5 — Projects -->
                 <Label style="-fx-font-size: 20px; -fx-font-weight: bold;" text="Projects" />
                 <Separator />
                 <TextArea fx:id="projectsField" prefRowCount="5" />
 
-                <HBox alignment="CENTER">
-                    <Button fx:id="generateBtn" style="-fx-font-size: 16px; -fx-padding: 10 25;" text="Generate CV" />
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="generateBtn" style="-fx-font-size: 16px; -fx-padding: 10 25;" text="Preview CV" />
+                    <Button fx:id="saveBtn" style="-fx-font-size: 16px; -fx-padding: 10 25;" text="Save to DB" />
                 </HBox>
 
             </VBox>
-
         </ScrollPane>
     </center>
-
 </BorderPane>
