@@ -21,6 +21,8 @@ public class SavedCVsController {
     @FXML private TableColumn<CV, Integer> idCol;
     @FXML private TableColumn<CV, String> nameCol;
     @FXML private TableColumn<CV, String> emailCol;
+    @FXML private TableColumn<CV, String> phoneCol; // NEW
+
     @FXML private Button loadBtn;
     @FXML private Button deleteBtn;
     @FXML private Button exportBtn;
@@ -31,9 +33,11 @@ public class SavedCVsController {
 
     @FXML
     private void initialize() {
+
         idCol.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getId()));
         nameCol.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getName()));
         emailCol.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getEmail()));
+        phoneCol.setCellValueFactory(c -> new ReadOnlyObjectWrapper<>(c.getValue().getPhone())); // NEW
 
         ObservableList<CV> list = service.getObservableList();
         table.setItems(list);
@@ -51,7 +55,10 @@ public class SavedCVsController {
         deleteBtn.setOnAction(e -> {
             CV selected = table.getSelectionModel().getSelectedItem();
             if (selected == null) { show("Please select a CV to delete"); return; }
-            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected CV?", ButtonType.YES, ButtonType.NO);
+
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION, "Delete selected CV?",
+                    ButtonType.YES, ButtonType.NO);
+
             confirm.showAndWait().ifPresent(bt -> {
                 if (bt == ButtonType.YES) {
                     service.delete(selected).whenComplete((v, ex) -> {
@@ -67,11 +74,14 @@ public class SavedCVsController {
         exportBtn.setOnAction(e -> {
             List<CV> selected = table.getSelectionModel().getSelectedItems();
             if (selected == null || selected.isEmpty()) { show("Select at least one CV to export"); return; }
+
             FileChooser chooser = new FileChooser();
             chooser.setTitle("Export Selected CVs");
             chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files", "*.json"));
+
             File file = chooser.showSaveDialog(null);
             if (file == null) return;
+
             try {
                 JsonUtil.exportToFile(selected, file);
                 show("Exported to " + file.getAbsolutePath());
@@ -82,6 +92,7 @@ public class SavedCVsController {
         });
 
         table.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         loadAll();
     }
 
@@ -94,6 +105,8 @@ public class SavedCVsController {
     }
 
     private void show(String msg) {
-        Platform.runLater(() -> new Alert(Alert.AlertType.INFORMATION, msg, ButtonType.OK).showAndWait());
+        Platform.runLater(() ->
+                new Alert(Alert.AlertType.INFORMATION, msg, ButtonType.OK).showAndWait()
+        );
     }
 }

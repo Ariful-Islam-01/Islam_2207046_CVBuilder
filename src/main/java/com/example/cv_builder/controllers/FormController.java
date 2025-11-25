@@ -22,10 +22,11 @@ public class FormController {
     @FXML private Button backBtn;
 
     private final CVService service = AppServices.getCvService();
-    private CV editing;
+    private CV editing; // if we loaded an existing CV for edit
 
     @FXML
     public void initialize() {
+        // If TempStore has CV => we are editing
         editing = TempStore.get();
         if (editing != null) {
             loadIntoForm(editing);
@@ -35,15 +36,16 @@ public class FormController {
         generateBtn.setOnAction(e -> {
             if (isValid()) {
                 CV cv = collectFromForm();
-                TempStore.set(cv);
-                SceneManager.switchToPreview();
+                // show preview (not auto-save)
+                SceneManager.openPreviewWith(cv);
             }
         });
 
         saveBtn.setOnAction(e -> {
             if (!isValid()) return;
             CV cv = collectFromForm();
-            if (editing != null) cv.setId(editing.getId());
+            if (editing != null) cv.setId(editing.getId()); // keep id if editing
+
             saveBtn.setDisable(true);
             service.save(cv).whenComplete((saved, ex) -> {
                 Platform.runLater(() -> saveBtn.setDisable(false));

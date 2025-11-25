@@ -1,33 +1,16 @@
 package com.example.cv_builder.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Objects;
 
 public class CV {
-    private Integer id;
-    private String name;
-    private String email;
-    private String phone;
-    private String address;
-    private String education;
-    private String skills;
-    private String projects;
-    private String experience;
+    private Integer id; // null when not stored yet
+    private String name, email, phone, address;
+    private String education, skills, projects, experience;
 
     public CV() {}
 
-    @JsonCreator
-    public CV(@JsonProperty("id") Integer id,
-              @JsonProperty("name") String name,
-              @JsonProperty("email") String email,
-              @JsonProperty("phone") String phone,
-              @JsonProperty("address") String address,
-              @JsonProperty("education") String education,
-              @JsonProperty("skills") String skills,
-              @JsonProperty("projects") String projects,
-              @JsonProperty("experience") String experience) {
+    public CV(Integer id, String name, String email, String phone, String address,
+              String education, String skills, String projects, String experience) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,11 +22,13 @@ public class CV {
         this.experience = experience;
     }
 
+    // convenience constructor without id
     public CV(String name, String email, String phone, String address,
               String education, String skills, String projects, String experience) {
         this(null, name, email, phone, address, education, skills, projects, experience);
     }
 
+    // getters & setters
     public Integer getId() { return id; }
     public void setId(Integer id) { this.id = id; }
 
@@ -74,7 +59,8 @@ public class CV {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof CV)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+
         CV cv = (CV) o;
         return Objects.equals(id, cv.id);
     }

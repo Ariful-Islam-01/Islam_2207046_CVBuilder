@@ -43,13 +43,12 @@ public class PreviewController {
                     ex.printStackTrace();
                     Platform.runLater(() -> new Alert(Alert.AlertType.ERROR, "Save failed: " + ex.getMessage()).showAndWait());
                 } else {
-                    Platform.runLater(() -> new Alert(Alert.AlertType.INFORMATION, "Saved", ButtonType.OK).showAndWait());
+                    Platform.runLater(() -> new Alert(Alert.AlertType.INFORMATION, "Saved", ButtonType.OK).show());
                 }
             });
         });
 
         exportBtn.setOnAction(e -> {
-            if (cv == null) return;
             FileChooser chooser = new FileChooser();
             chooser.setTitle("Export CV to JSON");
             chooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("JSON files", "*.json"));
@@ -77,15 +76,13 @@ public class PreviewController {
     }
 
     private void loadData(CV cv) {
-        nameLabel.setText(safe(cv.getName()));
-        emailLabel.setText(safe(cv.getEmail()));
-        phoneLabel.setText(safe(cv.getPhone()));
-        addressLabel.setText(safe(cv.getAddress()));
-        educationLabel.setText(safe(cv.getEducation()));
-        skillsLabel.setText(safe(cv.getSkills()));
-        experienceLabel.setText(safe(cv.getExperience()));
-        projectsLabel.setText(safe(cv.getProjects()));
+        nameLabel.setText(cv.getName());
+        emailLabel.setText(cv.getEmail());
+        phoneLabel.setText(cv.getPhone());
+        addressLabel.setText(cv.getAddress());
+        educationLabel.setText(cv.getEducation());
+        skillsLabel.setText(cv.getSkills());
+        experienceLabel.setText(cv.getExperience());
+        projectsLabel.setText(cv.getProjects());
     }
-
-    private String safe(String s) { return s == null ? "" : s; }
 }

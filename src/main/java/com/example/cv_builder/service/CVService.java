@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class CVService {
+
     private final CVRepository repo = new CVRepository();
     private final ObservableList<CV> observableList = FXCollections.observableArrayList();
 
@@ -17,10 +18,16 @@ public class CVService {
         return observableList;
     }
 
-    public CVRepository getRepository() { return repo; }
+    public CVRepository getRepository() {
+        return repo;
+    }
 
+    // ---------------- SAVE ----------------
     public CompletableFuture<CV> save(CV cv) {
-        if (cv.getId() == null) {
+
+        boolean isNew = (cv.getId() == null);
+
+        if (isNew) {
             return repo.insert(cv).thenApply(saved -> {
                 Platform.runLater(() -> observableList.add(0, saved));
                 return saved;
@@ -28,12 +35,12 @@ public class CVService {
         } else {
             return repo.update(cv).thenApply(v -> {
                 Platform.runLater(() -> {
-                    int idx = -1;
+                    int index = -1;
                     for (int i = 0; i < observableList.size(); i++) {
-                        CV c = observableList.get(i);
-                        if (c.getId() != null && c.getId().equals(cv.getId())) { idx = i; break; }
+                        CV item = observableList.get(i);
+                        if (item.getId().equals(cv.getId())) { index = i; break; }
                     }
-                    if (idx >= 0) observableList.set(idx, cv);
+                    if (index >= 0) observableList.set(index, cv);
                     else observableList.add(0, cv);
                 });
                 return cv;
@@ -41,11 +48,16 @@ public class CVService {
         }
     }
 
+    // ---------------- DELETE ----------------
     public CompletableFuture<Void> delete(CV cv) {
-        if (cv.getId() == null) return CompletableFuture.completedFuture(null);
-        return repo.delete(cv.getId()).thenRun(() -> Platform.runLater(() -> observableList.remove(cv)));
+        if (cv.getId() == null)
+            return CompletableFuture.completedFuture(null);
+
+        return repo.delete(cv.getId())
+                .thenRun(() -> Platform.runLater(() -> observableList.remove(cv)));
     }
 
+    // ---------------- LOAD ALL ----------------
     public CompletableFuture<List<CV>> loadAll() {
         return repo.fetchAll().thenApply(list -> {
             Platform.runLater(() -> observableList.setAll(list));
@@ -53,6 +65,7 @@ public class CVService {
         });
     }
 
+    // ---------------- SHUTDOWN ----------------
     public void shutdown() {
         repo.shutdown();
     }

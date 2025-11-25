@@ -14,14 +14,17 @@ public class DatabaseManager {
             initDatabase();
         } catch (Exception e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to initialize database", e);
         }
     }
 
     private static void initDatabase() throws Exception {
         Path dbDir = Path.of(DB_DIR);
         if (!Files.exists(dbDir)) Files.createDirectories(dbDir);
-        try (Connection c = getConnection(); Statement s = c.createStatement()) {
+
+        // create DB file if not exists by connecting
+        try (Connection c = getConnection()) {
+            // create cvs table
             String create = """
                     CREATE TABLE IF NOT EXISTS cvs (
                       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +38,9 @@ public class DatabaseManager {
                       experience TEXT
                     );
                     """;
-            s.execute(create);
+            try (Statement s = c.createStatement()) {
+                s.execute(create);
+            }
         }
     }
 

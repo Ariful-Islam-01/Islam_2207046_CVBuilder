@@ -6,9 +6,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) throws Exception {
         SceneManager.setStage(stage);
-        SceneManager.switchToHome();
+        SceneManager.switchToHome(); // initial scene
         stage.setTitle("CV Builder");
         stage.show();
     }
